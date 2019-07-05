@@ -18,5 +18,4 @@ Hello Conor {
     log: [Function: log],
     endPoint: 'http://mylogger.io/log'
 }
-
 */
