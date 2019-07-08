@@ -1,21 +1,10 @@
-function sayHello(name) {
-    console.log('Hello '+ name);
-}
 
-sayHello('Conor');
+const Logger = require('./logger');
+const logger = new Logger();
 
-// var logger = require('./NodeModuleSystem/logger');
+//  Register a listener
+logger.on('messageLogged', (arg) => {
+    console.log('Listener Called: ', arg);
+});
 
-// BEST PRACTICE
-const logger = require('./NodeModuleSystem/logger');
-console.log(logger);
-
-/*
-CONSOLE RESULT:
-
-C: \Programming\ NodeJS\ NodeLearning\ MoshCourse > node app.js
-Hello Conor {
-    log: [Function: log],
-    endPoint: 'http://mylogger.io/log'
-}
-*/
+logger.log('message');
