@@ -58,14 +58,20 @@ app.get('/api/posts/:year/:month', (req, res) => {
 //================
 
 app.post('/api/courses', (req, res) => {
-    //  Define Schema
+    //  Input Validation (Joi Package)
+        //  Define Schema
     const schema = {
         name: Joi.string().min(3).required()
     };
     const result = Joi.validate(req.body, schema);
     console.log(result);
-    
-    //  Input Validation
+    //  Error response from 'Joi' 
+    if (result.error) {
+        res.status(400).send(result.error.details[0].message);
+        return;
+    }
+
+    //  Input Validation (Manuel)
     if (!req.body.name || req.body.length < 3) {
         // return 400 Bad Request
         res.status(400).send('Name is required and should be a min of 3 characters..');
