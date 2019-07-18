@@ -48,10 +48,11 @@ api.get('/api/genres', (req, res) => {
 //  by ID
 api.get('/api/genres/:id', (req, res) => {
     //  Validate
-    //const genre = genres.find(g => g.id === parseInt(req.params.id));
-    if(!genre) return res.status(404).send('That Genre does not exist...');
+    const genre = genres.find(g => g.id === parseInt(req.params.id));
+    if (!genre) return res.status(404).send('That Genre does not exist...');
     //  Return
-    res.send(genre);
+    res.send(`Genre: ${genre.name} <br> Id: ${genre.id}`);
+
 });
  
 //=================

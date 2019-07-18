@@ -34,7 +34,7 @@ app.get('/api/courses', (req, res) => {
 });
 
 // Route Parameters
-    // /api/courses/:<paraValue>
+    // /api/courses/<paraValue>
 app.get('/api/courses/:id', (req, res) => {
     const course = courses.find(c => c.id === parseInt(req.params.id));
     if (!course) res.status(404).send('There is no such course...'); //404
